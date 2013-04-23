@@ -1,0 +1,6 @@
+<h1>Add <%= @occupation_type %> to <%= @film.title %></h1>
+<%= form_tag(set_occupation_film_path(@film)) do %>
+  <%= hidden_field_tag(:occupation_type, @occupation_type) %>
+  <%= select_tag(:person_id, options_for_select(Person.all.collect{|p| [p.name, p.id]})) %>
+<button type="submit" class="btn btn-success">Set Occupation</button>
+<% end %>

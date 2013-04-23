@@ -1,0 +1,44 @@
+<%= form_for(@person) do |f| %>
+  <% if @person.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@person.errors.count, "error") %> prohibited this person from being saved:</h2>
+
+      <ul>
+      <% @person.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="control-group">
+    <label class="control-label" for="name">Name</label>
+    <div class="controls">
+      <%= f.text_field(:name) %>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="birth_name">Birth Name</label>
+    <div class="controls">
+      <%= f.text_field(:birth_name) %>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="birth_location">Birth Location</label>
+    <div class="controls">
+      <%= f.text_field(:birth_location) %>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="birth_location">Biography</label>
+    <div class="controls">
+      <%= f.text_area(:biography, :rows => 5) %>
+    </div>
+  </div>
+  <div class="control-group">
+    <% if @person.new_record? %>
+      <button type="submit" class="btn btn-primary">Create</button>
+    <% else %>
+      <button type="submit" class="btn btn-warning">Update</button>
+    <% end %>
+  </div>
+<% end %>

@@ -1,0 +1,69 @@
+<p id="notice"><%= notice %></p>
+<div>
+  <%= link_to 'Edit', edit_film_path(@film) %> |
+  <%= link_to 'Back', films_path %>
+</div>
+<div class="hero-unit">
+  <h1><%= @film.title %></h1>
+  <br />
+  <p><strong>Length:</strong>&nbsp;<%= @film.length %></p>
+  <p><strong>Synopsis:</strong></p>
+  <p><%= @film.synopsis %></p>
+  <hr />
+  <hr />
+  <p>
+    <strong>Directors:</strong>&nbsp;
+    <%= link_to("Add Director", add_occupation_film_path(@film, :occupation_type => "Director"), :class => "btn") %>
+    <br />
+    <% @film.directors.each do |p| %>
+      <%= link_to(p.name, person_path(p.person)) %><br />
+    <% end %>    
+  </p>
+  <hr />
+  <p>
+    <strong>Writers:</strong>&nbsp;
+    <%= link_to("Add Writer", add_occupation_film_path(@film, :occupation_type => "Writer"), :class => "btn") %>
+    <br />
+    <% @film.writers.each do |p| %>
+      <%= link_to(p.name, person_path(p.person)) %><br />
+    <% end %>    
+  </p>
+  <hr />
+  <p>
+    <strong>Producers:</strong>&nbsp;
+    <%= link_to("Add Producer", add_occupation_film_path(@film, :occupation_type => "Producer"), :class => "btn") %>
+    <br />
+    <% @film.producers.each do |p| %>
+      <%= link_to(p.name, person_path(p.person)) %><br />
+    <% end %>    
+  </p>
+  <hr />
+  <p>
+    <strong>Actors:</strong>&nbsp;
+    <%= link_to("Add Cast", add_characters_and_actors_film_path(@film), :class => "btn") %>
+    <br />
+    <% @film.actors.each do |p| %>
+      <%= link_to(p.name, person_path(p.person)) %><br />
+    <% end %>    
+  </p>
+  <hr />
+</div>
+<div>
+  <h3>Cast</h3>
+  <% unless @film.characters.blank? %>
+    <table class="table table-condenced">
+      <tr>
+      <th>Played By</th>
+      <th>Character Name</th>
+      <th>Storyline</th>
+      </tr>
+      <% @film.characters.each do |c| %>
+        <tr>
+          <td><%= c.actor.name %></td>
+          <td><%= c.name %></td>
+          <td><%= c.biography %></td>
+        </tr>
+      <% end %>
+    </table>
+  <% end %>
+</div>

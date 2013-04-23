@@ -1,0 +1,18 @@
+<h1>Add Cast to <%= @film.title %></h1>
+<%= form_tag(set_characters_and_actors_film_path(@film)) do %>
+<table class="table table-condenced">
+  <tr>
+  <th>Played By</th>
+  <th>Character Name</th>
+  <th>Storyline</th>
+  </tr>
+<% (1..7).to_a.each do |n| %>
+  <tr>
+    <td><%= select_tag("characters[#{n}][person_id]", options_for_select(Person.all.collect{|p| [p.name, p.id]})) %></td>
+    <td><%= text_field_tag("characters[#{n}][name]", "") %></td>
+    <td><%= text_field_tag("characters[#{n}][biography]", "") %></td>
+  </tr>
+<% end %>
+</table>
+<button type="submit" class="btn btn-success">Add Cast</button>
+<% end %>

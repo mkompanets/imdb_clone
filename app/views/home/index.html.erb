@@ -1,0 +1,42 @@
+<div class="page-header"><h1>The Challenge <small>clone IMDB</small></h1></div>
+<div class="hero-unit">
+  <p>Scenarios:</p>
+  <ul>
+    <li>An actor can star in many movies; sometimes they can play multiple characters in the same movie</li>
+    <li>An actor can direct many movies; they can also star in the movie they're directing</li>
+    <li>An actor can write the screenplay for many movies, they can also star in the same movie</li>
+  </ul>
+</div>
+<div class="hero-unit">
+  <h2>Solution:</h2>
+  <p>The solution I came up with uses <span class="label label-info">STI</span> to represent multiple different occupations for the same person.</p>
+  <p>The <span class="label label-inverse">Person</span> class will store all the attributes relevant to an individual.</p>
+  <p>The
+    <span class="label label-inverse">Occupation</span> class will belong to <span class="label label-inverse">Person</span> and will have an inheritance column.</p>
+  <p>
+    Additional models will be created to represent 
+    <span class="label label-inverse">Actor</span>, 
+    <span class="label label-inverse">Writer</span>, 
+    <span class="label label-inverse">Director</span> and 
+    <span class="label label-inverse">Producer</span> 
+    that will inherit from <span class="label label-inverse">Occupation</span> class.  This structure will allow for an individual to perform several different tasks for the same film.
+  </p>
+  <p>
+    Additionally, having different classes for each occupation lets us declare unique relationships.  For example: A film has many characters and each <span class="label label-inverse">Character</span> belongs to an Actor.  Only an <span class="label label-inverse">Actor</span> should have many characters as a declared relationship.
+  </p>
+  <p>
+    The 
+    <span class="label label-inverse">Film</span>
+    class will have an intermediate table film_occupations.  Having declared this relationship it is possible to reference actors, writers, etc. directly from the <span class="label label-inverse">Film</span> model.
+  </p>
+  <p>To test this concept <%= link_to("Create New Person", new_person_path, :class => "btn btn-success") %> then click on <%= link_to("Films", films_path) %> to add them to the cast
+  </p>
+</div>
+<div class="hero-unit">
+  <p>Model Diagram:</p>
+  <p><%= image_tag("diagrams/models_brief.png") %></p>
+</div>
+<div class="hero-unit">
+  <p>Detailed Model Diagram:</p>
+  <p><%= image_tag("diagrams/models_complete.png") %></p>
+</div>

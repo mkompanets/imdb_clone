@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+<%= link_to 'Edit', edit_person_path(@person) %> |
+<%= link_to 'Back', people_path %>
+<div class="row-fluid">
+  <div class="span5">
+  <h3><%= @person.name %> <small>Filmography:</small></h3>
+  <table class="table">
+    <tr>
+      <td></td>
+      <td></td>
+  <% @person.occupations.each do |p| %>
+    <% p.films.each do |f| %>
+      <tr>
+        <td><%= link_to(f.title, film_path(f)) %></td>
+        <td><%= p.class.name %></td>
+      </tr>
+    <% end %>
+  <% end %>
+  </table>
+  </div>
+</div>

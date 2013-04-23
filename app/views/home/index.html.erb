@@ -27,7 +27,7 @@
   <p>
     The 
     <span class="label label-inverse">Film</span>
-    class will have an intermediate table film_occupations.  Having declared this relationship it is possible to reference actors, writers, etc. directly from the <span class="label label-inverse">Film</span> model.
+    class will have a has_many relationship through film_occupations.  Having declared this relationship it is possible to reference actors, writers, etc. directly from the <span class="label label-inverse">Film</span> model.
   </p>
   <p>To test this concept <%= link_to("Create New Person", new_person_path, :class => "btn btn-success") %> then click on <%= link_to("Films", films_path) %> to add them to the cast
   </p>
